@@ -12,6 +12,10 @@ class Item extends React.Component {
 
 class App extends React.Component {
 
+  // nameRef = React.createRef();
+  // <input type="text" ref={this.nameRef} />
+  // let name = this.nameRef.current.value;
+
   state = {
     items: [
       {id: 1, name: 'Apple', price: 2.1},
@@ -19,13 +23,18 @@ class App extends React.Component {
     ]
   }
 
+  nameRef = React.createRef();
+  priceRef = React.createRef();
+
   add = () => {
     let id = this.state.items.length + 1;
+    let name = this.nameRef.current.value;
+    let price = this.priceRef.current.value;
 
     this.setState({
       items: [
         ...this.state.items,
-        {id, name: `Fruit ${id}`, price: 0.1 * id}
+        {id, name, price}
       ]
     })
   }
@@ -34,6 +43,8 @@ class App extends React.Component {
     return (
       <div>
         <h1>Hello React Hi</h1>
+        <input type="text" ref={this.nameRef} />
+        <input type="text" ref={this.priceRef} />
         <button onClick={this.add}>Add</button>
         <ul>
           {this.state.items.map( i => {
@@ -45,7 +56,6 @@ class App extends React.Component {
               />
             )
           })}
-          
         </ul>
       </div>
     )
