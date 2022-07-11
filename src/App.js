@@ -1,22 +1,15 @@
 import React from "react";
+import "./cus/css/cus.css"
 
 class App extends React.Component {
   render() {
-    let height = 200;
-    let width = 300;
-    const styles = {
-      bb: {
-        backgroundColor: 'black',
-        color: 'white',
-      },
-      border: {
-        border: '2px solid #007bff'
-      }
-    }
-
     return (
-      <div style={styles.bb}>
-        <h1 style={styles.border}>Brand & Logo</h1>
+      <div className="background">
+        <h1>Brand & Logo</h1>
+        <p>
+          This is Paragraph.
+        </p>
+        <button className="btn">Click Me</button>
       </div>
     )
   }
