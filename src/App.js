@@ -1,18 +1,13 @@
 import React from "react";
-import "./cus/css/cus.css"
+import Users from "./Users";
 
-class App extends React.Component {
-  render() {
-    return (
-      <div className="background">
-        <h1>Brand & Logo</h1>
-        <p>
-          This is Paragraph.
-        </p>
-        <button className="btn">Click Me</button>
-      </div>
-    )
-  }
+const App = (props) => {
+  return (
+    <ul>
+      <Users user="Aung Gyi" age="22" />
+      <Users user="Maung Gyi" age="21" />
+    </ul>
+  )
 }
 
 export default App;
