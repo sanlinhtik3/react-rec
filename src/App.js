@@ -1,39 +1,38 @@
-import React, { createRef } from "react";
-import Users from "./Users";
+import React from "react";
 
-const App = (props) => {
-  // let [user, setUser] = React.useState('Eain Kyi')
-  // let [age, setAge] = React.useState(22)
+const MyContext = React.createContext("Hello React");
 
-  let [users, setUsers] = React.useState([
-    {id: 1, user: "Eain Kyi", age: 22},
-    {id: 2, user: "Aung Gyi", age: 21},
-  ])
+// const App = props => {
+//   return <Navbar/>
+// }
 
-  let userRef = createRef();
-  let ageRef = createRef();
+// const Navbar = props => {
+//   return <Brand/>
+// }
 
-  let plus = () => {
-    let id = users.length + 1;
-    let user = userRef.current.value;
-    let age = userRef.current.value;
+// const Brand = props => {
+//   const value = React.useContext(MyContext)
+//   return <h1>{value}</h1>
+// }
 
-    setUsers([
-      ...users,
-      {id, user, age},
-    ])
+class App extends React.Component {
+  render() {
+    return <Navbar/>
   }
+}
 
-  return (
-    <div>
-      <input type="text" ref={userRef} /> <br/>
-      <input type="text" ref={ageRef} /> <br/>
-      <button onClick={plus}>Plus +</button>
-      <ul>
-          {users.map(u => <Users key={u.id} user={u.user} age={u.age} />)}
-      </ul>
-    </div>
-  )
+class Navbar extends React.Component {
+  render() {
+    return <Brand/>
+  }
+}
+
+class Brand extends React.Component {
+  static contextType = MyContext;
+  
+  render() {
+    return <h1>{this.context}</h1>
+  }
 }
 
 export default App;
