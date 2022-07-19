@@ -1,44 +1,22 @@
-import React, { createRef } from "react";
-import { connect } from "react-redux";
-
-const User = ({ name, age }) => (
-  <li>{name}, {age}</li>
-)
+import { Routes, Route, Link } from "react-router-dom";
+import About from "./About";
+import Home from "./Home";
 
 const App = props => {
-  let nameRef = createRef();
-  let ageRef = createRef();
-
-  const plus = () => {
-    props.plus(props.users.length + 1, nameRef.current.value, ageRef.current.value);
-  };
 
   return (
     <div>
-      <input type="text" ref={nameRef} />
-      <input type="text" ref={ageRef} />
-      <button onClick={plus}>Plus +</button>
+      <h1>You can do it. I belive in you.</h1>
       <ul>
-        {props.users.map( u => (<User key={u.id} name={u.name} age={u.age} />) )}
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/about">About</Link></li>
       </ul>
+      <Routes>
+        <Route path="/" element={<Home/>} />
+        <Route path="about" element={<About/>} />
+      </Routes>
     </div>
   )
 }
 
-const stateToProps = state => {
-  return {
-    users: state
-  }
-}
-
-const dispatchToProps = dispatch => {
-  return {
-    plus: (id, name, age) => {
-      dispatch({type: "PLUS", user: {id, name, age}})
-    }
-  }
-}
-
-const ReduxApp = connect(stateToProps, dispatchToProps)(App);
-
-export default ReduxApp;
+export default App;
