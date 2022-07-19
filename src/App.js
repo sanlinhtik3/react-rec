@@ -2,6 +2,14 @@ import { Routes, Route, Link } from "react-router-dom";
 import About from "./About";
 import Home from "./Home";
 
+const Human = props => {
+  const { human } = useParams();
+
+  return (
+    <h1>Profile {human}</h1>
+  )
+}
+
 const App = props => {
 
   return (
@@ -12,8 +20,7 @@ const App = props => {
         <li><Link to="/about">About</Link></li>
       </ul>
       <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="about" element={<About/>} />
+        <Route path="/:human" element={<Human/>} />
       </Routes>
     </div>
   )
