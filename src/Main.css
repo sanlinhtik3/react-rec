@@ -1,3 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner:wght@400;500;600;700&display=swap');
+
+@font-face {
+    font-family: "mm";
+    font-weight: normal;
+    src: url("fonts/Z06-Walone/Z06-WaloneBold.ttf");
+}
+
+*{
+    font-family: mm;
+}
+
 .active {
     color: #dc2626;
     text-decoration: none;
@@ -7,3 +19,6 @@
     width: 20%;
 }
 
+.duc {
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+}
