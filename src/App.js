@@ -9,8 +9,8 @@ const App = props => {
     <div>
       <h1>You can do it. I belive in you.</h1>
       <ul>
-        <li><NavLink to="/" className={({isActive}) => isActive && "active"} >Home</NavLink></li>
-        <li><NavLink to="/about" className={({isActive}) => isActive && "active"} >About</NavLink></li>
+        <li><NavLink to="/" className={({isActive}) => isActive ? "active": null} >Home</NavLink></li>
+        <li><NavLink to="/about" className={({isActive}) => isActive ? "active": null} >About</NavLink></li>
       </ul>
       <Routes>
         <Route path="/" element={<Home />} />
