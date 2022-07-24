@@ -1,9 +1,9 @@
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useParams } from "react-router-dom";
 import About from "./About";
 import Home from "./Home";
 
 const Human = props => {
-  const { human } = useParams();
+  const { human } = useParams()
 
   return (
     <h1>Profile {human}</h1>
