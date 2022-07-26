@@ -1,21 +1,25 @@
-import { Routes, Route, Link, NavLink, useParams } from "react-router-dom";
-import About from "./About";
-import Home from "./Home";
-import './Main.css'
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const App = props => {
 
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    getProducts()
+    // axios.get('https://dummyjson.com/products').then((res) => console.log(res.data.products[0]))
+    // axios.get('https://dummyjson.com/products').then((res) => setProducts(res.data.products))
+  }, [])
+
+  async function getProducts() {
+    const res = await axios.get('https://dummyjson.com/products');
+    console.log(res)
+    setProducts(res.data.products)
+  }
+
   return (
     <div>
-      <h1>You can do it. I belive in you.</h1>
-      <ul>
-        <li><NavLink to="/" className={({isActive}) => isActive ? "active": null} >Home</NavLink></li>
-        <li><NavLink to="/about" className={({isActive}) => isActive ? "active": null} >About</NavLink></li>
-      </ul>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-      </Routes>
+      {products.map((product) => <h1 key={product.id}> {product.id} {product.title}</h1>)}
     </div>
   )
 }
